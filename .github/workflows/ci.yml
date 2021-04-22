@@ -36,3 +36,7 @@ jobs:
           submodules: true
       - name: Set Skip Env Var
         uses: ./.github/actions/skip-ci
+      - uses: actions/setup-java@v1
+        if: env.SKIP_CI != 'true'
+        with:
+          java-version: 8
