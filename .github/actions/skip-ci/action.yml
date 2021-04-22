@@ -19,7 +19,7 @@
 name: "Set Skip Env Var"
 description: "Action to set the SKIP_CI environment variable indicating that we should skip CI jobs"
 inputs:
-  paths:
+  ignore-paths:
     description: >-
       Set the SKIP_CI environment variable when and only when all the changed files located in one of the path,
       the paths is shell-style pattern.
@@ -53,7 +53,7 @@ runs:
         fi
 
         echo "Ignore pattern:"
-        for pattern in $(echo '${{ inputs.paths }}'); do
+        for pattern in $(echo '${{ inputs.ignore-paths }}'); do
           echo $pattern
         done
 
@@ -65,7 +65,7 @@ runs:
         echo "SKIP_CI=true" >> $GITHUB_ENV
         for file in ${files}; do
           matched=0
-          for pattern in $(echo '${{ inputs.paths }}'); do
+          for pattern in $(echo '${{ inputs.ignore-paths }}'); do
             pattern=$(echo "$pattern" | sed 's/"//g')
             if eval "[[ '$file' == $pattern ]]"; then
               matched=1
@@ -73,7 +73,7 @@ runs:
             fi
           done
           if [[ "$matched" == "0" ]]; then
-            echo "$file doesn't match pattern $(echo '${{ inputs.paths }}'), stop checking"
+            echo "$file doesn't match pattern $(echo '${{ inputs.ignore-paths }}'), stop checking"
             echo "SKIP_CI=false" >> $GITHUB_ENV
             break
           fi
