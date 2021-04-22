@@ -35,4 +35,4 @@ jobs:
         with:
           submodules: true
       - name: Set Skip Env Var
-        uses: ./.github/actions/skip-action
+        uses: ./.github/actions/skip-ci
