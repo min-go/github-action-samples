@@ -1,0 +1,3 @@
+[submodule ".github/actions/issues-translate-action"]
+	path = .github/actions/issues-translate-action
+	url = https://github.com/usthe/issues-translate-action
