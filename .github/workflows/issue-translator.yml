@@ -9,6 +9,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+          # ct needs history to compare
+          fetch-depth: 0
       - uses: ./.github/actions/issues-translate-action
         with:
           IS_MODIFY_TITLE: false
