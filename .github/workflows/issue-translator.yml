@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 0
       - uses: ./.github/actions/issues-translate-action
         with:
-          IS_MODIFY_TITLE: true
+          IS_MODIFY_TITLE: false
           BOT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # Required, input your bot github token
           BOT_LOGIN_NAME: github-actions[bot]
