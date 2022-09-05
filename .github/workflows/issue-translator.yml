@@ -17,10 +17,10 @@ jobs:
           fetch-depth: 0
       - uses: ./.github/actions/issues-translate-action
         with:
-          IS_MODIFY_TITLE: false
+          IS_MODIFY_TITLE: true
           BOT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # Required, input your bot github token
-          BOT_LOGIN_NAME: Issues-translate-bot
+          BOT_LOGIN_NAME: github-actions[bot]
           # not require, default false, . Decide whether to modify the issue title
           # if true, the robot account @Issues-translate-bot must have modification permissions, invite @Issues-translate-bot to your project or use your custom bot.
           CUSTOM_BOT_NOTE: Bot detected the issue body's language is not English, translate it automatically. 👯👭🏻🧑‍🤝‍🧑👫🧑🏿‍🤝‍🧑🏻👩🏾‍🤝‍👨🏿👬🏿
